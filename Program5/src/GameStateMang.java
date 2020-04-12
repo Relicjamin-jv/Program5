@@ -1,5 +1,8 @@
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+/*
+ *sets up logic for the different game states and when they'll be used 
+ */
 
 public class GameStateMang {
 	private ArrayList<GS> states;
