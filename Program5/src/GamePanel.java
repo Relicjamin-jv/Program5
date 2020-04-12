@@ -18,6 +18,8 @@ public class GamePanel extends JPanel implements Runnable{
 	private boolean running = false;
 	private BufferedImage img;
 	private Graphics2D g;
+	private KeyHandler key;
+	private GameStateMang gsm;
 
 	/*
 	 * Constructure for gamepanel
@@ -42,7 +44,7 @@ public class GamePanel extends JPanel implements Runnable{
 		}
 	}
 	/*
-	 * init the gane with buffered image and graphics.
+	 * init the game with buffered image and graphics.
 	 */
 	public void init() {
 		running = true;
@@ -50,7 +52,10 @@ public class GamePanel extends JPanel implements Runnable{
 		img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 		g = (Graphics2D) img.getGraphics(); // we use g to draw the image to the screen not g2. g -> img -> g2.
 
-
+		
+		key = new KeyHandler(this);
+		
+		gsm = new GameStateMang();
 	}
 
 	/*
@@ -82,7 +87,7 @@ public class GamePanel extends JPanel implements Runnable{
 			int updateCount = 0;
 			while(((now - lastUpdateTime) > (TBU)) && (updateCount < MUBR)){//set up an render before and update and allow it to update
 				update();
-				input();
+				input(key);
 				lastUpdateTime += TBU; //last time it update in terms of ns;
 				updateCount++;//it Updated so add it y'know;
 			}
@@ -93,7 +98,7 @@ public class GamePanel extends JPanel implements Runnable{
 				lastUpdateTime = now - TBU;
 			}
 			
-			input();
+			input(key);
 			render();
 			draw();
 			lastRenderTime = now;
@@ -106,7 +111,7 @@ public class GamePanel extends JPanel implements Runnable{
 					 System.out.println("NEW SECOND " + thisSecond + " " + frame);
 					 oldFrameCount = frame;
 				}
-				frame= 0;
+				frame = 0;
 				lastSecondTime = thisSecond;
 			}
 			
@@ -124,19 +129,20 @@ public class GamePanel extends JPanel implements Runnable{
 		}
 	}
 	
-	public void input() {
-		
+	public void input(KeyHandler key) {
+		gsm.input(key);
 	}
 	
 	
 	public void update() {
-		
+		gsm.update();
 	}
 	
 	public void render() {
 		if(g != null) {
 			g.setColor(new Color(44, 134, 244)); //set the backround color
 			g.fillRect(0, 0, this.width, this.height); //set the backround color
+			gsm.render(g);
 		}
 	}
 	/*
