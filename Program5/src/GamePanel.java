@@ -62,7 +62,7 @@ public class GamePanel extends JPanel implements Runnable{
 	 * creates the game loop
 	 * Collin -  Ummmm game loops yeah there fun and all/
 	 * This is a FIXED one, meaning that there might be an issue with rendering and updates but to counteract that I have this set up to 
-	 * render 5 times more than the render happens. Hopefully deleting the issue to another time.
+	 * render 5 times more than the update happens. Hopefully deleting the issue to another time.
 	 */
 	public void run() {
 		init();
@@ -143,6 +143,7 @@ public class GamePanel extends JPanel implements Runnable{
 			g.setColor(new Color(44, 134, 244)); //set the backround color
 			g.fillRect(0, 0, this.width, this.height); //set the backround color
 			gsm.render(g);
+
 		}
 	}
 	/*

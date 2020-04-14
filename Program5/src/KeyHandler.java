@@ -48,6 +48,7 @@ public class KeyHandler implements KeyListener {
 	public Key enter = new Key();
 	public Key escape = new Key();
 	
+	
 	public void releaseAll() {
 		for(int i = 0; i < keys.size(); i++) {
 			keys.get(i).down = false;

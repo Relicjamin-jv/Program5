@@ -18,8 +18,8 @@ public class PlayState extends GS{
 	}
 	
 	public void render(Graphics2D g) {
-		g.setColor(Color.black);
-		g.fillRect((1280 / 2) - 31, (720 / 2) - 31, 62, 62);
+		g.setColor(Color.RED);
+		g.fillRect((1280 / 2) - 64, (720 / 2) - 64, 128, 128);
 	}
 
 }
