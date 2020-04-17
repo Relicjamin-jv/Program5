@@ -2,12 +2,12 @@
  * sets up sprites and the abilty to use them, does include the font at the end just in case
  */
 
-import java.awt.Font;
+
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
 import javax.imageio.ImageIO;
+
 public class Objects {
 
 	private BufferedImage SPRITESHEET = null;
@@ -79,19 +79,19 @@ public class Objects {
 
 	public void loadSpriteArray() {
 		sprites = new BufferedImage[wSprite][hSprite];
-
-		for(int i = 0; i < wSprite; i ++) {
-			for(int j = 0; j < hSprite; j++) {
-				sprites[i][j] = getSprite(i, j);
-			}
-		}
+		
+		 for (int y = 0; y < hSprite; y++) {
+	            for (int x = 0; x < wSprite; x++) {
+	                sprites[x][y] = getSprite(x, y);
+	            }
+		 }
 	}
 
 	public BufferedImage getSpriteSheet() {
 		return SPRITESHEET;
 	}
 	public BufferedImage getSprite(int x, int y) {
-		return SPRITESHEET.getSubimage(x * w, y * h, w, h);
+		return SPRITESHEET.getSubimage(x * w, y * h , w, h);
 	}
 
 	public BufferedImage[] getSpriteArray(int i) {
