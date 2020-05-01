@@ -69,7 +69,7 @@ public class Animation {
 	public BufferedImage getImage() {
 		return frames[cFrame];
 	}
-	public boolean hasPlatedOnce() {
+	public boolean hasPlayedOnce() {
 		return timesPlayed > 0;
 	}
 	public boolean hasPlayed(int i) {
