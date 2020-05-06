@@ -4,11 +4,8 @@ import java.awt.Graphics2D;
 public class PlayState extends GS{
 	
 	private player player;
-
 	private Font font;
-
 	private tileManager tm;
-
 	
 	public PlayState(GameStateMang gsm) {
 		super(gsm); 
@@ -36,6 +33,7 @@ public class PlayState extends GS{
 		//g.fillRect((1280 / 2) - 64, (720 / 2) - 64, 128, 128);
 		tm.render(g);
 		player.render(g);
+		SpriteSheet.drawArray(g, font, "YOU WIN", new Vector2f(300, 200), 64, 64, 32,0);
 	}
 
 }
