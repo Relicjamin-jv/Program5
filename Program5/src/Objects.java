@@ -78,13 +78,13 @@ public class Objects {
 	}
 
 	public void loadSpriteArray() {
-		sprites = new BufferedImage[wSprite][hSprite];
+		sprites = new BufferedImage[hSprite][wSprite];
 		
-		 for (int y = 0; y < hSprite; y++) {
-	            for (int x = 0; x < wSprite; x++) {
-	                sprites[x][y] = getSprite(x, y);
-	            }
-		 }
+		for(int y = 0; y < hSprite; y++) {
+			for(int x = 0; x < wSprite; x++) {
+				sprites[y][x] = getSprite(x, y);
+			}
+		}
 	}
 
 	public BufferedImage getSpriteSheet() {
@@ -126,5 +126,5 @@ public class Objects {
 		}
 	x =+ xOffset;
 	y += yOffset;
-	*/
+	 */
 }

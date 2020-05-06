@@ -7,9 +7,11 @@ import javax.swing.JFrame;
  */
 public class Window extends JFrame{
 	
-	
+	/*
+	 * sets up window.
+	 */
 	public Window() {
-		setTitle("From Private Dan");
+		setTitle("dog");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setContentPane(new GamePanel(1280, 720)); // get the window to be the resolution desired 

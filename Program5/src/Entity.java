@@ -2,11 +2,12 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 public abstract class Entity {
-
-	private final int UP = 0;
+	
+	private final int IDLE = 0;
+	private final int UP = 1;
 	private final int DOWN = 1;
-	private final int RIGHT = 2;
-	private final int LEFT = 3;
+	private final int RIGHT = 1;
+	private final int LEFT = 2;
 	protected int currentAnimation;
 
 	protected Animation ani;
@@ -20,11 +21,12 @@ public abstract class Entity {
 	protected boolean down;
 	protected boolean right;
 	protected boolean left;
+	protected boolean idle = true;
 	protected float dx;
 	protected float dy;
-	protected float maxSpeed;
-	protected float acc;
-	protected float deacc;
+	protected float maxSpeed = 2f;
+	protected float acc = 1f;
+	protected float deacc = .5f;
 
 	public Entity(Objects sprite, Vector2f orgin, int size) {
 		this.sprite = sprite;
@@ -54,6 +56,22 @@ public abstract class Entity {
 		else if(left) {
 			if(currentAnimation != LEFT || ani.getDelay() == -1) {
 				setAnimation(LEFT, sprite.getSpriteArray(LEFT), 5);
+			}
+		}
+
+		else if(up) {
+			if(currentAnimation != UP || ani.getDelay() == -1) {
+				setAnimation(UP, sprite.getSpriteArray(UP), 5);
+			}
+		}
+		else if(idle) {
+			if(currentAnimation != IDLE || ani.getDelay() == -1) {
+				setAnimation(IDLE, sprite.getSpriteArray(IDLE), 5);
+			}
+		}
+		else if(down) {
+			if(currentAnimation != DOWN || ani.getDelay() == -1) {
+				setAnimation(DOWN, sprite.getSpriteArray(DOWN), 5);
 			}
 		}
 		else {
