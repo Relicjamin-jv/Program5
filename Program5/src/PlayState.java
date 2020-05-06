@@ -4,10 +4,12 @@ import java.awt.Graphics2D;
 public class PlayState extends GS{
 	
 	private player player;
+	private Font font;
 	
 	public PlayState(GameStateMang gsm) {
 		super(gsm); 
 		player = new player(new Objects("dog.png"), new Vector2f((1280 / 2) - 64, (720 / 2) - 64), 32);
+		font = new Font("ZeldaFont.png", 16, 16);
 	}
 	
 	public void update() {
