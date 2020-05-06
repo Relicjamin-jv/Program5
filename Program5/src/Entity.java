@@ -24,7 +24,7 @@ public abstract class Entity {
 	protected boolean idle = true;
 	protected float dx;
 	protected float dy;
-	protected float maxSpeed = 2f;
+	protected float maxSpeed = 3f;
 	protected float acc = 1f;
 	protected float deacc = .5f;
 

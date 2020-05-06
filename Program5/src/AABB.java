@@ -91,4 +91,22 @@ public class AABB {
 		}
 		return false;
 	}
+	
+	public boolean collisionTile(float ax, float ay) {
+		for(int i = 0; i < 4; i++) {
+			int xt = (int) ((pos.x + ax) + (i%2) * w + xOffset) /80;
+			int yt = (int) ((pos.y + ay) + ((int) ( i / 2)) * h + yOffset) /80;
+			
+			if(TileMapObj.tmo_blocks.containsKey(String.valueOf(xt) + "," + String.valueOf(yt))) {
+				return TileMapObj.tmo_blocks.get(String.valueOf(xt) + "," + String.valueOf(yt)).update(this);
+			}
+		}
+		return false;
+	}
+	public float getXOffset() {
+		return xOffset;
+	}
+	public float getYOffset() {
+		return yOffset;
+	}
 }

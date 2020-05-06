@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 public class player extends Entity{
@@ -9,6 +10,8 @@ public class player extends Entity{
 
 	@Override
 	public void render(Graphics2D g) {
+		g.setColor(Color.blue);
+		g.drawRect((int) (pos.getWorldVar().x + bounds.getXOffset()), (int) (pos.getWorldVar().y + bounds.getYOffset()), (int)bounds.getWidth(), (int) bounds.getHeight());
 		g.drawImage(ani.getImage(), (int) (pos.getWorldVar().x), (int) (pos.getWorldVar().y), size, size, null);
 
 	}
@@ -16,10 +19,14 @@ public class player extends Entity{
 	public void update() {
 		super.update();
 		move();
+		if(!bounds.collisionTile(dx, 0)) {
 		PlayState.map.x += dx;
-		PlayState.map.y += dy;
 		pos.x += dx;
+		}
+		if(!bounds.collisionTile(0, dy)) {
+		PlayState.map.y += dy;
 		pos.y += dy;
+		}
 	}
 
 	public void input(KeyHandler key) {
