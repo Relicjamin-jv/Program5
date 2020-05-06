@@ -6,6 +6,10 @@ public class player extends Entity{
 	public player(Objects sprite, Vector2f orgin, int size) {
 		super(sprite, orgin, size);
 		
+		bounds.setHeight(20);
+		bounds.setWidth(40);
+		bounds.setXOffset(15);
+		bounds.setYOffset(45);
 	}
 
 	@Override
@@ -31,7 +35,7 @@ public class player extends Entity{
 
 	public void input(KeyHandler key) {
 		if(key.enter.down) {
-			System.out.println("Player " + pos.x + pos.y );
+			System.out.println("Player " + pos.x + " ..... " + pos.y );
 		}
 
 		if(key.up.down) {
@@ -56,7 +60,7 @@ public class player extends Entity{
 		}
 	}
 
-	public void move() {
+	private void move() {
 		if(up) {
 			dy -= acc;
 			if(dy < -maxSpeed) {

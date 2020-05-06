@@ -1,7 +1,7 @@
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-public abstract class Entity {
+public abstract class Entity{
 	
 	private final int IDLE = 0;
 	private final int UP = 1;

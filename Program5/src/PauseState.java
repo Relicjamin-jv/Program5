@@ -8,14 +8,11 @@ public class PauseState extends GS {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-
+		System.out.println("PUASED");
 	}
 
 	@Override
 	public void input(KeyHandler key) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override

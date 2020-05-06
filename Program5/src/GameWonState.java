@@ -1,10 +1,10 @@
-import java.awt.Graphics2D;
+ import java.awt.Graphics2D;
 
-public class GameOverState extends GS {
+public class GameWonState extends GS {
 	
 	private Font font;
 	
-	public GameOverState(GameStateMang gameStateMangager) {
+	public GameWonState(GameStateMang gameStateMangager) {
 		super(gameStateMangager);
 		font = new Font("ZeldaFont.png", 16, 16);
 	}
@@ -18,7 +18,6 @@ public class GameOverState extends GS {
 	@Override
 	public void input(KeyHandler key) {
 		key.escape.tick();
-		
 		if(key.escape.clicked) {
 			System.exit(0);
 		}
@@ -27,10 +26,8 @@ public class GameOverState extends GS {
 
 	@Override
 	public void render(Graphics2D g) {
-		SpriteSheet.drawArray(g, font, "YOU LOST", new Vector2f((1280 / 2) - 64, (720 / 3) - 64), 64, 64, 32,0);
+		SpriteSheet.drawArray(g,font, "YOU WIN", new Vector2f((1280 / 2) - 64, (720 / 2) - 64), 64, 64, 32,0);
 
 	}
-	
-	
 
 }

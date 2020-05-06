@@ -17,27 +17,33 @@ public class PlayState extends GS{
 
 		
 		tm = new tileManager("Game .xml");
-		player = new player(new Objects("Dog.png"), new Vector2f((1280 / 2) - 64, (720 / 3) - 64), 64);
-		enemy = new Enemy(new Objects("blobSH.png" , 32, 32), new Vector2f((1280 / 2) - 120, (720 / 3) - 64), 64);
+		player = new player(new Objects("Dog.png"), new Vector2f(180, 173), 64);
+		enemy = new Enemy(new Objects("blobSH.png" , 32, 32), new Vector2f(465, 368), 64);
 	}
 	
 	public void update() {
 		Vector2f.setWorldVar(map.x, map.y);
 		player.update();
-		enemy.update(player.bounds);
+		enemy.update(player);
 	}
 	
 	public void input(KeyHandler key) {
-		player.input(key);	
+		key.escape.tick();
+		player.input(key);
+		
+		if(key.escape.clicked) {
+			if(gs.getState(GameStateMang.pause)) {
+				gs.pop(GameStateMang.pause);
+			}else {
+				gs.add(GameStateMang.pause);
+			}
+		}
 	}
 	
 	public void render(Graphics2D g) {
-		//g.setColor(Color.RED);
-		//g.fillRect((1280 / 2) - 64, (720 / 2) - 64, 128, 128);
 		tm.render(g);
 		player.render(g);
 		enemy.render(g);
-		//SpriteSheet.drawArray(g, font, "YOU WIN", new Vector2f((1280 / 2) - 64, (720 / 3) - 64), 64, 64, 32,0);
 	}
 
 }

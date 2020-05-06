@@ -17,6 +17,8 @@ public class Objects {
 	public int h;
 	private int wSprite;
 	private int hSprite;
+	
+	public static Font CurrentFont;
 
 	public Objects(String file) {
 		w = TILE_SIZE;

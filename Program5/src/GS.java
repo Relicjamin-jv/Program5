@@ -2,7 +2,7 @@ import java.awt.Graphics2D;
 
 public abstract class GS {
 	
-	private GameStateMang gs;
+	protected GameStateMang gs;
 	
 	public GS(GameStateMang gsm) {
 		this.gs = gsm;

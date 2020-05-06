@@ -2,23 +2,91 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 public class Enemy extends Entity{
-	
+
 	private AABB sense;
 	private int radius;
 	
+
 	public Enemy(Objects sprite, Vector2f orgin, int size) {
 		super(sprite, orgin, size);
-		
+
 		acc = 1f;
-		maxSpeed = 3f;
-		radius = 135;
-		
-		sense = new AABB(new Vector2f(orgin.x - size / 2, orgin.y - size / 2), radius, null);
+		maxSpeed = 2.9f;
+		radius = 200;
+
+		sense = new AABB(new Vector2f(orgin.x + size / 2 - radius / 2, orgin.y + size / 2 - radius / 2), radius, null);
 	}
-	
-	public void update(AABB Player) {
-		if(sense.colCircleBox(Player)) {
-			System.out.println("Yep");
+	private void move(player player) {
+		if(sense.colCircleBox(player.getBounds())) {
+			if(pos.y > player.pos.y + 1) {
+				dy -= acc;
+				if(dy < -maxSpeed) {
+					dy = -maxSpeed;
+				}
+			}else {
+				if(dy < 0) {
+					dy += deacc;
+					if(dy > 0) {
+						dy = 0;
+					}
+				}
+			}
+			if(pos.y < player.pos.y - 1) {
+				dy += acc;
+				if(dy > maxSpeed) {
+					dy = maxSpeed;
+				}
+			}else {
+				if(dy > 0) {
+					dy -= deacc;
+					if(dy < 0) {
+						dy = 0;
+					}
+				}
+			}
+			if(pos.x > player.pos.x + 1) {
+				dx -= acc;
+				if(dx < -maxSpeed) {
+					dx = -maxSpeed;
+				}
+			}else {
+				if(dx < 0) {
+					dx += deacc;
+					if(dx > 0) {
+						dx = 0;
+					}
+				}
+			}
+			if(pos.x < player.pos.x - 1) {
+				dx += acc;
+				if(dx > maxSpeed) {
+					dx = maxSpeed;
+				}
+			}else {
+				if(dx > 0) {
+					dx -= deacc;
+					if(dx < 0) {
+						dx = 0;
+					}
+				}
+			}
+		}else {
+			dx = 0;
+			dy = 0;
+		}
+	}
+
+
+	public void update(player player) {
+		super.update();
+		move(player);
+		if(!sense.collisionTile(dx, 0)) {
+			sense.getpos().x += dx;
+			pos.x += dx;
+		}
+		if(!sense.collisionTile(0, dy)) {
+			sense.getpos().y += dy;
+			pos.y += dy;
 		}
 	}
 
