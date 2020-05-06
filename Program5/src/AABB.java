@@ -80,17 +80,19 @@ public class AABB {
 	}
 	
 	public boolean colCircleBox(AABB aBox) {
-		float cx = (float) (pos.getWorldVar().x / r / Math.sqrt(2) - e.getSize() / Math.sqrt(2));
-		float cy = (float) (pos.getWorldVar().y / r / Math.sqrt(2) - e.getSize() / Math.sqrt(2));
 		
-		float xDelta = cx - Math.max(aBox.pos.getWorldVar().x + (aBox.getWidth()/ 2), Math.min(cx, aBox.pos.getWorldVar().x));
-		float yDelta = cy - Math.max(aBox.pos.getWorldVar().y + (aBox.getWidth()/ 2), Math.min(cx, aBox.pos.getWorldVar().y));
+		float dx = Math.max(aBox.getpos().getWorldVar().x + aBox.getXOffset(), Math.min(pos.getWorldVar().x + (r/2), aBox.getpos().getWorldVar().x + aBox.getXOffset() + aBox.getWidth()));
+		float dy = Math.max(aBox.getpos().getWorldVar().y + aBox.getYOffset(), Math.min(pos.getWorldVar().y + (r/2), aBox.getpos().getWorldVar().y + aBox.getYOffset() + aBox.getHeight()));
 		
-		if((xDelta * xDelta + yDelta * yDelta) < (this.r / Math.sqrt(2) * (this.r / Math.sqrt(2)))){
+		dx = pos.getWorldVar().x + (r/2) - dx;
+		dy = pos.getWorldVar().y + (r/2) - dy;
+		
+		if(Math.sqrt(dx * dx + dy * dy) < r / 2) {
 			return true;
 		}
 		return false;
 	}
+
 	
 	public boolean collisionTile(float ax, float ay) {
 		for(int i = 0; i < 4; i++) {
@@ -109,4 +111,6 @@ public class AABB {
 	public float getYOffset() {
 		return yOffset;
 	}
+	
+	
 }

@@ -7,6 +7,7 @@ public class PlayState extends GS{
 	private Font font;
 	private tileManager tm;
 	protected static Vector2f map;
+	private Enemy enemy;
 	
 	public PlayState(GameStateMang gsm) {
 		super(gsm);
@@ -17,11 +18,13 @@ public class PlayState extends GS{
 		
 		tm = new tileManager("Game .xml");
 		player = new player(new Objects("Dog.png"), new Vector2f((1280 / 2) - 64, (720 / 3) - 64), 64);
+		enemy = new Enemy(new Objects("blobSH.png" , 32, 32), new Vector2f((1280 / 2) - 120, (720 / 3) - 64), 64);
 	}
 	
 	public void update() {
 		Vector2f.setWorldVar(map.x, map.y);
 		player.update();
+		enemy.update(player.bounds);
 	}
 	
 	public void input(KeyHandler key) {
@@ -33,7 +36,8 @@ public class PlayState extends GS{
 		//g.fillRect((1280 / 2) - 64, (720 / 2) - 64, 128, 128);
 		tm.render(g);
 		player.render(g);
-		SpriteSheet.drawArray(g, font, "YOU WIN", new Vector2f((1280 / 2) - 64, (720 / 3) - 64), 64, 64, 32,0);
+		enemy.render(g);
+		//SpriteSheet.drawArray(g, font, "YOU WIN", new Vector2f((1280 / 2) - 64, (720 / 3) - 64), 64, 64, 32,0);
 	}
 
 }

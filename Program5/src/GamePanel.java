@@ -140,7 +140,7 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	public void render() {
 		if(g != null) {
-			g.setColor(new Color(168, 74, 50)); //set the backround color
+			g.setColor(new Color(0, 0, 0)); //set the backround color
 			g.fillRect(0, 0, this.width, this.height); //set the backround color
 			gsm.render(g);
 
