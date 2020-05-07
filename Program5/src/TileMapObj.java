@@ -1,7 +1,9 @@
 import java.awt.Graphics2D;
 
 import java.util.HashMap;
-
+/*
+ * ran out of time and never used but left here in case you wanted to add interactablilty with objects
+ */
 public class TileMapObj extends TileMap {
 	
 	public static HashMap<String, Block> tmo_blocks;

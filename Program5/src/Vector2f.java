@@ -1,4 +1,6 @@
-
+/*
+ * sets up the physics with the world
+ */
 public class Vector2f {
 	public float x;
 	public float y; 

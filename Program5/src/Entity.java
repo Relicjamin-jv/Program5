@@ -34,18 +34,23 @@ public abstract class Entity{
 		this.size = size;
 
 		bounds = new AABB(orgin, size, size);
-		hit  = new AABB(new Vector2f(orgin.x + (size/2), orgin.y), size, size);
-
+		hit  = new AABB(orgin, size, size);
+		hit.setXOffset(size / 2);
+		
 		ani = new Animation();
 		setAnimation(RIGHT, sprite.getSpriteArray(RIGHT), 10);
 	}
-
+	/*
+	 * set the current animation for all enimies/players
+	 */
 	public void setAnimation(int i, BufferedImage[] frames, int delay) {
 		currentAnimation = i;
 		ani.setFrames(frames);
 		ani.setDelay(delay);
 	}
-
+	/*
+	 * set the right animation for which way the player is moving
+	 */
 	public void animate() {
 		if(right) {
 			if(currentAnimation != RIGHT || ani.getDelay() == -1) {
@@ -79,7 +84,9 @@ public abstract class Entity{
 		}
 
 	}
-
+	/*
+	 * ran out of time but I wanted this to be used to attack
+	 */
 	public void setHitBoxDirection(){
 		if(up) {
 			hit.setYOffset(-size/2);
@@ -98,7 +105,9 @@ public abstract class Entity{
 			hit.setYOffset(0);
 		}
 	}
-
+	/*
+	 * allows the animation spritesheet to be played
+	 */
 	public void update() {
 		animate();
 		setHitBoxDirection();

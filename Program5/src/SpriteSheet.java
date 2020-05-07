@@ -1,6 +1,8 @@
 
 import java.awt.Graphics2D;
-
+/*
+ * much like the objects class for the sprites instead this works with fonts instead
+ */
 public class SpriteSheet {
 	public static Font currentFont;
 

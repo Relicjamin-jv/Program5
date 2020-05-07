@@ -23,7 +23,9 @@ public class Font {
 	        hLetter = FONTSHEET.getHeight() / h;
 	        loadFontArray();        
 	    }
-
+	/*
+	 * get the image to be used
+	 */
 	private BufferedImage loadFont(String file) {
 		BufferedImage font = null;
 		try {
@@ -33,7 +35,9 @@ public class Font {
 		}
 		return font;
 	}
-
+	/*
+	 * Loads "ZeldaFont.png" spriteSheet
+	 */
 	public void loadFontArray() {
 		fontArray = new BufferedImage[hLetter][wLetter];
 
@@ -43,7 +47,6 @@ public class Font {
 			}
 		}
 	}
-
 	public BufferedImage getLetter(int x, int y) {
 		return FONTSHEET.getSubimage(x * w, y * h, w, h);
 	}

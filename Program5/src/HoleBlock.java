@@ -1,7 +1,9 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-
+/*
+ * Reference Block
+ */
 public class HoleBlock extends Block {
 
 	public HoleBlock(BufferedImage img, Vector2f pos, int w, int h) {

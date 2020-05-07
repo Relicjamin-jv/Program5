@@ -1,5 +1,5 @@
 /*
- * hit detection
+ * hit detection for different mechanics of the game
  */
 public class AABB {
 	
@@ -37,14 +37,18 @@ public class AABB {
 	public float getHeight() {
 		return h;
 	}
-	
+	/*
+	 * sets the position of the hitbox 
+	 */
 	public void setBox(Vector2f pos, int w, int h) {
 		this.pos = pos;
 		this.w = w;
 		this.h = h;
 		size = Math.max(w, h);
 	}
-	
+	/*
+	 * sets the position of the circlebox
+	 */
 	public void setCircle(Vector2f pos, int r) {
 		this.pos = pos;
 		this.r = r;
@@ -65,11 +69,14 @@ public class AABB {
 	public void setYOffset(float f) {
 		yOffset = f;
 	}
+	/*
+	 * if two boxes/circles intersect then it return true
+	 */
 	public boolean collides(AABB bBox) {
-		float ax = ((pos.getWorldVar().x + (xOffset)) + (w / 2));
-		float ay = ((pos.getWorldVar().y + (yOffset)) + (h / 2));
-		float bx = ((bBox.pos.getWorldVar().x) + (bBox.xOffset / 2) + (w / 2));
-		float by = ((bBox.pos.getWorldVar().y) + (bBox.yOffset / 2) + (h / 2));
+		float ax = ((pos.getWorldVar().x + (xOffset)) + (w / 2)) ;
+		float ay = ((pos.getWorldVar().y + (yOffset)) + (h / 2)) ;
+		float bx = ((bBox.pos.getWorldVar().x) + (bBox.xOffset / 2) + (w / 2)) ;
+		float by = ((bBox.pos.getWorldVar().y) + (bBox.yOffset / 2) + (h / 2)) ;
 		
 		if(Math.abs(ax - bx) < (this.w / 2) + (bBox.w) / 2) {
 			if(Math.abs(ay - by) < (this.h / 2) + (bBox.h / 2)) {
@@ -78,7 +85,9 @@ public class AABB {
 		}
 		return false;
 	}
-	
+	/*
+	 * Makes the the sensor for the circle
+	 */
 	public boolean colCircleBox(AABB aBox) {
 		
 		float dx = Math.max(aBox.getpos().getWorldVar().x + aBox.getXOffset(), Math.min(pos.getWorldVar().x + (r/2), aBox.getpos().getWorldVar().x + aBox.getXOffset() + aBox.getWidth()));
@@ -93,7 +102,9 @@ public class AABB {
 		return false;
 	}
 
-	
+	/*
+	 * collsion between tiles the player
+	 */
 	public boolean collisionTile(float ax, float ay) {
 		for(int i = 0; i < 4; i++) {
 			int xt = (int) ((pos.x + ax) + (i%2) * w + xOffset) /50;

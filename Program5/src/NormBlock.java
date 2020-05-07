@@ -2,7 +2,9 @@ import java.awt.image.BufferedImage;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-
+/*
+ * reference block
+ */
 public class NormBlock extends Block {
 
 	public NormBlock(BufferedImage img, Vector2f pos, int w, int h) {

@@ -1,5 +1,8 @@
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+/*
+ * makes the tiles that you can walk on walkable
+ */
 public class TileMapNorm extends TileMap {
 	
 	private ArrayList<Block> blocks;

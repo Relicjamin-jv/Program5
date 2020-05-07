@@ -7,11 +7,15 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/*
+ * handles the keys and interaction between the user and the keyboard
+ */
 public class KeyHandler implements KeyListener {
 	
 	public static List<Key> keys = new ArrayList<Key>();
-	
+	/*
+	 * Another class inside a class, allow the tracking of clicking the key(toggle) and holding it down.
+	 */
 	public class Key{
 		public int presses, absorbs;
 		public boolean down, clicked;
@@ -38,7 +42,9 @@ public class KeyHandler implements KeyListener {
 			}
 		}
 	}
-	
+	/*
+	 * assortment of keys being used
+	 */
 	public Key up = new Key();
 	public Key down = new Key();
 	public Key left = new Key();
@@ -48,19 +54,25 @@ public class KeyHandler implements KeyListener {
 	public Key enter = new Key();
 	public Key escape = new Key();
 	
-	
+	/*
+	 * resets the key being pushed
+	 */
 	public void releaseAll() {
 		for(int i = 0; i < keys.size(); i++) {
 			keys.get(i).down = false;
 		}
 	}
-	
+	/*
+	 * A method that waits for the key to be pressed
+	 */
 	public void tick() {
 		for(int i = 0; i < keys.size(); i++) {
 			keys.get(i).tick();
 		}
 	}
-	
+	/*
+	 * 
+	 */
 	public KeyHandler(GamePanel game) {
 		game.addKeyListener(this);
 	}

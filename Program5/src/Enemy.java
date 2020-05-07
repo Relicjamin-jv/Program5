@@ -1,9 +1,11 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
-
+/*
+ * reference Entity for methods and their uses
+ */
 public class Enemy extends Entity{
 
-	private AABB sense;
+	private AABB poison;
 	private int radius;
 	
 
@@ -11,13 +13,12 @@ public class Enemy extends Entity{
 		super(sprite, orgin, size);
 
 		acc = 1f;
-		maxSpeed = 2.9f;
+		maxSpeed = 2.5f;
 		radius = 200;
 
-		sense = new AABB(new Vector2f(orgin.x + size / 2 - radius / 2, orgin.y + size / 2 - radius / 2), radius, null);
+		poison = new AABB(new Vector2f(orgin.x + size / 2 - radius / 2, orgin.y + size / 2 - radius / 2), radius, null);
 	}
 	private void move(player player) {
-		if(sense.colCircleBox(player.getBounds())) {
 			if(pos.y > player.pos.y + 1) {
 				dy -= acc;
 				if(dy < -maxSpeed) {
@@ -70,22 +71,19 @@ public class Enemy extends Entity{
 					}
 				}
 			}
-		}else {
-			dx = 0;
-			dy = 0;
 		}
-	}
+	
 
 
 	public void update(player player) {
 		super.update();
 		move(player);
-		if(!sense.collisionTile(dx, 0)) {
-			sense.getpos().x += dx;
+		if(!poison.collisionTile(dx, 0)) {
+			poison.getpos().x += dx;
 			pos.x += dx;
 		}
-		if(!sense.collisionTile(0, dy)) {
-			sense.getpos().y += dy;
+		if(!poison.collisionTile(0, dy)) {
+			poison.getpos().y += dy;
 			pos.y += dy;
 		}
 	}
@@ -97,7 +95,7 @@ public class Enemy extends Entity{
 		g.setColor(Color.green);
 		g.drawRect((int) (pos.getWorldVar().x + bounds.getXOffset()), (int) (pos.getWorldVar().y + bounds.getYOffset()), (int) bounds.getWidth(), (int) bounds.getHeight());
 		g.setColor(Color.blue);
-		g.drawOval((int) (sense.getpos().getWorldVar().x), ((int) (sense.getpos().getWorldVar().y)), radius, radius);
+		g.drawOval((int) (poison.getpos().getWorldVar().x), ((int) (poison.getpos().getWorldVar().y)), radius, radius);
 		g.drawImage(ani.getImage(), (int) (pos.getWorldVar().x), (int) (pos.getWorldVar().y), size, size, null);
 	}
 }

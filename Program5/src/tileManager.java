@@ -13,7 +13,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 
-
+/*
+ * makes the map by an XML file
+ */
 public class tileManager {
 
 	public static ArrayList<TileMap> tm;
@@ -42,7 +44,9 @@ public class tileManager {
 		Objects sprite;
 
 		String[] data = new String[10];
-
+		/*
+		 * reads the file and puts it together
+		 */
 		  try {
 	            DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
 	            DocumentBuilder builder = builderFactory.newDocumentBuilder();
@@ -82,7 +86,9 @@ public class tileManager {
 	                }
 	            }
 
-	           
+	           /*
+	            * throws if cannot read file
+	            */
 	        } catch(Exception e) {
 	            System.out.println("ERROR: can not read tilemap:");
 	            e.printStackTrace();

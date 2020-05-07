@@ -1,5 +1,7 @@
 import java.awt.Graphics2D;
-
+/*
+ * reference GS
+ */
 public class PauseState extends GS {
 	
 	public PauseState(GameStateMang gameStateMangager) {

@@ -7,7 +7,9 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
-
+/*
+ * inits all the sprites that are going to be used.
+ */
 public class Objects {
 
 	private BufferedImage SPRITESHEET = null;
@@ -19,7 +21,9 @@ public class Objects {
 	private int hSprite;
 	
 	public static Font CurrentFont;
-
+	/*
+	 * the constuctor of the objects class
+	 */
 	public Objects(String file) {
 		w = TILE_SIZE;
 		h = TILE_SIZE;
@@ -67,7 +71,9 @@ public class Objects {
 	public int getHeight() {
 		return h;
 	}
-
+/*
+ * loads the sprite in 
+ */
 	private BufferedImage loadSprite(String file) {
 		BufferedImage sprite = null;
 		try {
@@ -78,7 +84,9 @@ public class Objects {
 		}
 		return sprite;
 	}
-
+/*
+ * starts loading the sprite into an array
+ */
 	public void loadSpriteArray() {
 		sprites = new BufferedImage[hSprite][wSprite];
 		
@@ -102,7 +110,9 @@ public class Objects {
 	public BufferedImage[][] getSpriteArray2(int i){
 		return sprites;
 	}
-
+/*
+ * draws the array
+ */
 	public static void drawArray(Graphics2D g, ArrayList<BufferedImage> img, Vector2f pos, int width, int height, int xOffset, int yOffset ) {
 		float x= pos.x;
 		float y = pos.y;

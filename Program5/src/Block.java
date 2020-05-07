@@ -1,7 +1,9 @@
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-
+/*
+ * set up each tile to have these classes
+ */
 public abstract class Block {
 	protected int w;
 	protected int h;

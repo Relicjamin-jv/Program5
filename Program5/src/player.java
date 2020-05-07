@@ -1,15 +1,23 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
-
+/*
+ * reference Entity
+ */
 public class player extends Entity{
+	
+	public boolean hits;
 
 	public player(Objects sprite, Vector2f orgin, int size) {
 		super(sprite, orgin, size);
-		
 		bounds.setHeight(20);
 		bounds.setWidth(40);
 		bounds.setXOffset(15);
 		bounds.setYOffset(45);
+	}
+
+	
+	public boolean getHits() {
+		return this.hits;
 	}
 
 	@Override
@@ -20,9 +28,12 @@ public class player extends Entity{
 
 	}
 
-	public void update() {
+	public void update(Enemy e) {
 		super.update();
 		move();
+		if(hit.collides(e.getBounds())) {
+			hits = true;
+		}
 		if(!bounds.collisionTile(dx, 0)) {
 		PlayState.map.x += dx;
 		pos.x += dx;
@@ -32,9 +43,11 @@ public class player extends Entity{
 		pos.y += dy;
 		}
 	}
+	
+	
 
 	public void input(KeyHandler key) {
-		if(key.enter.down) {
+		if(key.menu.down) {
 			System.out.println("Player " + pos.x + " ..... " + pos.y );
 		}
 
